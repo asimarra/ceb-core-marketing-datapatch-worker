@@ -1,0 +1,7 @@
+apps:
+  - script: ./index.js
+    name: "ceb-core-marketing-datapatch-worker"
+    max_memory_restart: 350M
+    log_date_format: "YYYY/MM/DD HH:mm:ss"
+    instances: 1
+    exec_mode: fork
