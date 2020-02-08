@@ -20,7 +20,8 @@ const getPeriodsToProcess = async (limit) => {
         and mr.dt_updated > rqr.dt_updated
       limit ${parseInt(limit)}
   `;
-  return mysql.query(query);
+  let response = await mysql.query(query);
+  return response;
 };
 
 const insert = async (data, table = 'tmp_datapatch_lcq') => {
@@ -30,7 +31,8 @@ const insert = async (data, table = 'tmp_datapatch_lcq') => {
     console.log(`insert into ${table} (${columns.join(', ')}) values (${values.join(', ')}) \n`);
   }
 
-  return mysql.query(`insert into ${table} (${columns.join(', ')}) values (${values.join(', ')})`);
+  let response = await mysql.query(`insert into ${table} (${columns.join(', ')}) values (${values.join(', ')})`);
+  return response;
 };
 
 const update = async (data, criteria, in_clause = false, table = 'required_courses_report') => {
@@ -41,7 +43,8 @@ const update = async (data, criteria, in_clause = false, table = 'required_cours
     console.log(`update ${table} set ${values} where ${column} ${in_clause ? `in (${value.join(',')})` : `= ${value}`}`);
   }
 
-  return mysql.query(`update ${table} set ${values} where ${column} ${in_clause ? `in (${value.join(',')})` : `= ${value}`}`);
+  let response = await mysql.query(`update ${table} set ${values} where ${column} ${in_clause ? `in (${value.join(',')})` : `= ${value}`}`);
+  return response;
 };
 
 module.exports = {

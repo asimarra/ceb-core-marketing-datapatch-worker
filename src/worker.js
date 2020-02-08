@@ -17,7 +17,7 @@ const self = {
 
     const licenses = await BIdatabase.getPeriodsToProcess(LIMIT_DATA);
     if (licenses && licenses.length) {
-      self.processLicenses(licenses);
+      await self.processLicenses(licenses);
       delay = 10;
     }
 
@@ -81,7 +81,7 @@ const self = {
     transcript_to_update.id_subject_area_master = transcript_to_update.id_subject_area_master.join(',');
     transcript_to_update.nm_subject_area_master = transcript_to_update.nm_subject_area_master.join(',');
 
-    return BIdatabase.update(transcript_to_update, { pk_license: pkLicense });
+    return await BIdatabase.update(transcript_to_update, { pk_license: pkLicense });
   }
 };
 
