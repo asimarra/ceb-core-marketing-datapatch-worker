@@ -29,7 +29,7 @@ const self = {
       let { pkLicense, dsLicenseNumber, idProfession, cdState } = license;
       let ds_license = `${cdState}_${dsLicenseNumber}`;
 
-      let currentPeriod = await repository.getCurrentPeriod(4733034);
+      let currentPeriod = await repository.getCurrentPeriod(pkLicense);
 
       if (currentPeriod.length > 0) {
         let idLicensePeriod = currentPeriod[0].ID_LICENSE_PERIOD;
