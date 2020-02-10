@@ -18,6 +18,8 @@ const getPeriodsToProcess = async (limit) => {
       on mr.pk_license = rqr.pk_license
       where tmp.pk_license is null
         and mr.dt_updated > rqr.dt_updated
+        and mr.dt_updated < '2020-02-08'
+        and mr.am_hours_required > 0
       limit ${parseInt(limit)}
   `;
   let response = await mysql.query(query);
